@@ -17,27 +17,19 @@ const styles = {
   }
 };
 
-class House extends Component {
+class Room extends Component {
   render() {
     const {
       classes,
-      house: {
-        houseId,
-        ownerNickname,
-        createdAt,
-        roomCount,
-        address,
-        alias,
-        houseImage
-      }
+      room: { alias, createdAt, houseId, roomId, roomImage }
     } = this.props;
     return (
-      <Link to={`/houses/${houseId}`}>
+      <Link to={`/room/${roomId}`}>
         <Card>
           <CardActionArea>
             <CardMedia
               component="img"
-              image={houseImage}
+              image={roomImage}
               alt={alias}
               height="140"
               title={alias}
@@ -46,9 +38,9 @@ class House extends Component {
               <Typography gutterBottom variant="h5" component="h2">
                 {alias}
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
+              {/* <Typography variant="body2" color="textSecondary" component="p">
                 {address}
-              </Typography>
+              </Typography> */}
             </CardContent>
           </CardActionArea>
         </Card>
@@ -57,4 +49,4 @@ class House extends Component {
   }
 }
 
-export default withStyles(styles)(House);
+export default withStyles(styles)(Room);

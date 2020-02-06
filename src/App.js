@@ -7,18 +7,20 @@ import Navbar from "./components/Navbar";
 
 //Pages
 import home from "./pages/home";
-import login from "./pages/login";
+import house from "./pages/house";
+import room from "./pages/login";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Router>
-          <Navbar />
+          {/* <Navbar /> */}
           <div className="container">
             <Switch>
               <Route exact path="/" component={home} />
-              <Route exact path="/login" component={login} />
+              <Route exact path="/houses/:houseId" component={house} />
+              <Route exact path="/rooms/:roomId" component={room} />
             </Switch>
           </div>
         </Router>
