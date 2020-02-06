@@ -24,7 +24,7 @@ class Room extends Component {
       room: { alias, createdAt, houseId, roomId, roomImage }
     } = this.props;
     return (
-      <Link to={`/room/${roomId}`}>
+      <Link to={`/rooms/${roomId}`}>
         <Card>
           <CardActionArea>
             <CardMedia
