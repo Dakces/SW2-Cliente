@@ -2,18 +2,33 @@ import React, { Component } from "react";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import House from "../components/House";
+import queryString from "query-string";
 
 import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  cardsSectionMargin: {
+    marginTop: "120px",
+    marginBottom: "30px"
+  },
+  houseCard: {
+    marginTop: "10px",
+    marginBottom: "10px"
+  }
+});
 
 class home extends Component {
   state = {
     houses: null
   };
   componentDidMount() {
+    const values = queryString.parse(this.props.location.search);
+    console.log(values.uid); // "top"
+
     axios
       .get("/houses")
       .then(res => {
-        console.log(res.data);
         this.setState({
           houses: res.data.data
         });
@@ -21,9 +36,17 @@ class home extends Component {
       .catch(err => console.log(err));
   }
   render() {
-    let recentHousesMarkup = this.state.houses ? (
+    const { classes } = this.props;
+
+    let houseComponents = this.state.houses ? (
       this.state.houses.map(house => (
-        <Grid item xs={3}>
+        <Grid
+          key={house.houseId}
+          item
+          xs={8}
+          md={4}
+          className={classes.houseCard}
+        >
           <House house={house} />
         </Grid>
       ))
@@ -37,18 +60,16 @@ class home extends Component {
           gutterBottom
           variant="h4"
           component="h3"
-          style={{ marginTop: 10 }}
+          className={classes.cardsSectionMargin}
         >
           Seleccione uno de sus hogares:
         </Typography>
-        <Grid container spacing={1}>
-          <Grid container justify="center" item xs={12} spacing={3}>
-            {recentHousesMarkup}
-          </Grid>
+        <Grid container justify="space-evenly" alignItems="center" item xs={12}>
+          {houseComponents}
         </Grid>
       </div>
     );
   }
 }
 
-export default home;
+export default withStyles(styles)(home);

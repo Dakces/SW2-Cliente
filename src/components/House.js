@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
-
 //Material UI Imports
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+// import { graphicTypes, optionsForGraphic } from "@kingtakeo/rechartjs";
 
 const styles = {
   card: {
@@ -20,19 +18,10 @@ const styles = {
 class House extends Component {
   render() {
     const {
-      classes,
-      house: {
-        houseId,
-        ownerNickname,
-        createdAt,
-        roomCount,
-        address,
-        alias,
-        houseImage
-      }
+      house: { houseId, address, alias, houseImage }
     } = this.props;
     return (
-      <Link to={`/houses/${houseId}`}>
+      <Link to={`/houses/${houseId}`} style={{ textDecoration: "none" }}>
         <Card>
           <CardActionArea>
             <CardMedia

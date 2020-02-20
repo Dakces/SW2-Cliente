@@ -1,11 +1,21 @@
 import React, { Component } from "react";
-import Link from "react-router-dom/Link";
 import axios from "axios";
 import Room from "../components/Room";
 
 //Material UI Imports
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { spacing } from '@material-ui/system';
+
+
+import { withStyles} from '@material-ui/core/styles';
+
+const styles = theme => ({
+  cardsSectionMargin: {    
+    marginTop: '30px',   
+    marginBottom: '30px'
+  },
+});
 
 
 class house extends Component {
@@ -30,7 +40,7 @@ class house extends Component {
   render() {
     let rooms = this.state.house ? (
       this.state.house.rooms.map(room => (
-        <Grid item xs={3}>
+        <Grid key={room.roomId} item xs={3}>
           <Room house={this.state.house} room={room} />
         </Grid>
       ))
@@ -40,12 +50,7 @@ class house extends Component {
 
     return (
       <div>
-        <Typography
-          gutterBottom
-          variant="h4"
-          component="h3"
-          style={{ marginTop: 10 }}
-        >
+        <Typography gutterBottom variant="h4" component="h3" m={10}>
           Seleccione una de sus habitaciones:
         </Typography>
         <Grid container spacing={1}>
@@ -58,4 +63,4 @@ class house extends Component {
   }
 }
 
-export default house;
+export default withStyles(styles)(house);
