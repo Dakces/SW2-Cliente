@@ -9,6 +9,7 @@ class Navbar extends Component {
     return (
       <AppBar>
         <Toolbar>
+          {/* que miras */}
           {/* <Button color="inherit" component={Link} to="/login">
             Login
           </Button>
