@@ -4,16 +4,20 @@ import { Bar } from "react-chartjs-2";
 class BarChart extends Component {
   state = {
     chartData: {
-      labels: ["Sensor1", "Sensor2", "Sensor3", "Sensor4"],
+      labels: ["1", "2", "3", "4", "5", "6", "7", "8"],
       datasets: [
         {
           label: "Unidad de medida",
-          data: [213, 411, 111, 154],
+          data: [213, 411, 111, 154, 123, 201, 111, 122],
           backgroundColor: [
-            "rgba(255,99,132,0.6)",
-            "rgba(255,99,132,0.6)",
-            "rgba(255,99,132,0.6)",
-            "rgba(255,99,132,0.6)"
+            "rgba(120,120,255,0.6)",
+            "rgba(120,120,255,0.6)",
+            "rgba(120,120,255,0.6)",
+            "rgba(120,120,255,0.6)",
+            "rgba(120,120,255,0.6)",
+            "rgba(120,120,255,0.6)",
+            "rgba(120,120,255,0.6)",
+            "rgba(120,120,255,0.6)"
           ]
         }
       ]
@@ -28,7 +32,7 @@ class BarChart extends Component {
           options={{
             title: {
               display: true,
-              text: "Sensor 1",
+              text: "Sensor 2",
               fontSize: 25
             },
             legend: { display: true, position: "bottom" }
